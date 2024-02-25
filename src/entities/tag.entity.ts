@@ -1,16 +1,22 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class Tag {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  readonly id: string;
 
   @Column({ type: 'text' })
   name: string;
 
-  @Column({ type: 'timestamp' })
+  @CreateDateColumn()
   createdAt: Date;
 
-  @Column({ type: 'timestamp' })
+  @UpdateDateColumn()
   updatedAt: Date;
 }

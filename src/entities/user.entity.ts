@@ -4,6 +4,7 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
+  Unique,
   UpdateDateColumn,
 } from 'typeorm';
 
@@ -12,6 +13,7 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   readonly id: string;
 
+  @Unique('unique_username', ['userName'])
   @Column({ type: 'text' })
   userName: string;
 
@@ -21,6 +23,7 @@ export class User {
   @Column({ type: 'text', array: true })
   roles: string[];
 
+  @Unique('unique_email', ['email'])
   @Column({ type: 'text' })
   email: string;
 

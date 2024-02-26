@@ -13,15 +13,28 @@ export class UserService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
+    if (
+      await this.userRepository.findOneBy({ userName: createUserDto.userName })
+    )
+      throw new HttpException(
+        `Username ${createUserDto.userName} already used`,
+        HttpStatus.BAD_REQUEST,
+      );
+
+    if (await this.userRepository.findOneBy({ email: createUserDto.email }))
+      throw new HttpException(
+        `Email ${createUserDto.email} already used`,
+        HttpStatus.BAD_REQUEST,
+      );
+
     const user: User = new User();
-    const hashPassword = await this.hashPassword(createUserDto.password);
+    const hashPassword = this.hashPassword(createUserDto.password);
     user.userName = createUserDto.userName;
     user.displayName = createUserDto.displayName;
     user.email = createUserDto.email;
     user.roles = createUserDto.roles;
     user.password = hashPassword;
     user.gender = createUserDto.gender;
-
     return this.userRepository.save(user);
   }
 
@@ -31,28 +44,27 @@ export class UserService {
 
   findOne(id: string): Promise<User> {
     const user = this.userRepository.findOneBy({ id });
-    if (!user) {
-      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
-    }
+    if (!user) throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+
     return user;
   }
 
   update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
-    if (!this.userRepository.findOneBy({ id })) {
+    if (!this.userRepository.findOneBy({ id }))
       throw new HttpException('User not found', HttpStatus.NOT_FOUND);
-    }
+
     return this.userRepository.save({ id, ...updateUserDto });
   }
 
   delete(id: string) {
-    if (!this.userRepository.findOneBy({ id })) {
+    if (!this.userRepository.findOneBy({ id }))
       throw new HttpException('User not found', HttpStatus.NOT_FOUND);
-    }
+
     return this.userRepository.delete({ id });
   }
 
-  async hashPassword(password: string): Promise<string> {
-    const saltOrRounds = 10;
-    return await bcrypt.hash(password, saltOrRounds);
+  hashPassword(password: string): string {
+    const salt = 10;
+    return bcrypt.hashSync(password, salt);
   }
 }

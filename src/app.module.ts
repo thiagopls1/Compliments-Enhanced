@@ -7,10 +7,14 @@ import { ComplimentModule } from './modules/compliment.module';
 import { Tag } from './entities/tag.entity';
 import { User } from './entities/user.entity';
 import { Compliment } from './entities/compliment.entity';
+import { AuthModule } from './modules/auth.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ envFilePath: `${process.env.NODE_ENV}.env` }),
+    ConfigModule.forRoot({
+      envFilePath: `${process.env.NODE_ENV}.env`,
+      isGlobal: true,
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST,
@@ -25,6 +29,7 @@ import { Compliment } from './entities/compliment.entity';
     TagModule,
     UserModule,
     ComplimentModule,
+    AuthModule,
   ],
 })
 export class AppModule {}

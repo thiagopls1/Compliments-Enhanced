@@ -42,8 +42,8 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  findOne(id: string): Promise<User> {
-    const user = this.userRepository.findOneBy({ id });
+  findOne(userName: string): Promise<User> {
+    const user = this.userRepository.findOneBy({ userName });
     if (!user) throw new HttpException('User not found', HttpStatus.NOT_FOUND);
 
     return user;

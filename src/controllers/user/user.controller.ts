@@ -28,9 +28,9 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id', ParseUUIDPipe) id: string) {
-    return this.userService.findOne(id);
+  @Get(':userName')
+  findOne(@Param('userName') userName: string) {
+    return this.userService.findOne(userName);
   }
 
   @Patch(':id/update')

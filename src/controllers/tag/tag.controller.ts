@@ -14,6 +14,7 @@ import { CreateTagDto } from '../../dtos/tag/create-tag.dto';
 import { UpdateTagDto } from '../../dtos/tag/update-tag.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from 'src/guards/auth/auth.guard';
+import { AdminGuard } from 'src/guards/admin/admin.guard';
 
 @ApiBearerAuth()
 @UseGuards(AuthGuard)
@@ -22,6 +23,7 @@ import { AuthGuard } from 'src/guards/auth/auth.guard';
 export class TagController {
   constructor(private readonly tagService: TagService) {}
 
+  @UseGuards(AdminGuard)
   @Post('create')
   create(@Body() createTagDto: CreateTagDto) {
     return this.tagService.create(createTagDto);
@@ -37,6 +39,7 @@ export class TagController {
     return this.tagService.findOne(id);
   }
 
+  @UseGuards(AdminGuard)
   @Patch(':id/update')
   update(
     @Param('id', ParseUUIDPipe) id: string,
@@ -45,6 +48,7 @@ export class TagController {
     return this.tagService.update(id, updateTagDto);
   }
 
+  @UseGuards(AdminGuard)
   @Delete(':id/delete')
   delete(@Param('id') id: string) {
     return this.tagService.remove(id);

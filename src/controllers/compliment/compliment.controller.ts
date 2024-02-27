@@ -6,11 +6,15 @@ import {
   Param,
   ParseUUIDPipe,
   Post,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { CreateComplimentDto } from 'src/dtos/compliment/create-compliment.dto';
+import { AuthGuard } from 'src/guards/auth/auth.guard';
 import { ComplimentService } from 'src/services/compliment/compliment.service';
 
+@ApiBearerAuth()
+@UseGuards(AuthGuard)
 @ApiTags('Compliment')
 @Controller('user')
 export class ComplimentController {

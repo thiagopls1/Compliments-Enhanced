@@ -7,12 +7,16 @@ import {
   ParseUUIDPipe,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from 'src/dtos/user/create-user.dto';
 import { UpdateUserDto } from 'src/dtos/user/update-user.dto';
+import { AuthGuard } from 'src/guards/auth/auth.guard';
 import { UserService } from 'src/services/user/user.service';
 
+@ApiBearerAuth()
+@UseGuards(AuthGuard)
 @ApiTags('User')
 @Controller('user')
 export class UserController {

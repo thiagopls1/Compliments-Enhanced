@@ -1,9 +1,12 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AuthUserDto } from 'src/dtos/user/auth-user.dto';
 import { User } from 'src/entities/user.entity';
+import { AuthGuard } from 'src/guards/auth/auth.guard';
 import { AuthService } from 'src/services/auth/auth.service';
 
+@ApiBearerAuth()
+@UseGuards(AuthGuard)
 @ApiTags('Auth')
 @Controller()
 export class AuthController {

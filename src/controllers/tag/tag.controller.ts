@@ -15,6 +15,8 @@ import { UpdateTagDto } from '../../dtos/tag/update-tag.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from 'src/guards/auth/auth.guard';
 
+@ApiBearerAuth()
+@UseGuards(AuthGuard)
 @ApiTags('Tag')
 @Controller('tag')
 export class TagController {
@@ -25,8 +27,6 @@ export class TagController {
     return this.tagService.create(createTagDto);
   }
 
-  @ApiBearerAuth()
-  @UseGuards(AuthGuard)
   @Get('list')
   findAll() {
     return this.tagService.findAll();

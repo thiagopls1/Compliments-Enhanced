@@ -1,6 +1,9 @@
 {
-  "name": "client",
-  "version": "0.0.0",
+  "name": "web",
+  "version": "0.0.1",
+  "author": "thiagopls1",
+  "private": false,
+  "license": "UNLICENSED",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +12,6 @@
     "test": "ng test",
     "serve:ssr:client": "node dist/client/server/server.mjs"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^18.0.1",
     "@angular/cdk": "^18.0.2",

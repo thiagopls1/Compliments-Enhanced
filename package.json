@@ -1,0 +1,14 @@
+{
+  "name": "compliments-enhanced",
+  "version": "0.0.1",
+  "author": "thiagopls1",
+  "private": false,
+  "license": "UNLICENSED",
+  "workspaces": ["web", "api"],
+  "scripts": {
+    "dev:web": "npm run start -w web",
+    "dev:web:ssr": "npm run serve:ssr:client -w web",
+    "dev:api": "npm run start:dev -w api"
+  },
+  "description": ""
+}

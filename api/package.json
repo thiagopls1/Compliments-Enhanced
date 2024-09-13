@@ -1,9 +1,9 @@
 {
-  "name": "compliments-enhanced",
+  "name": "api",
   "version": "0.0.1",
   "description": "",
-  "author": "",
-  "private": true,
+  "author": "thiagopls1",
+  "private": false,
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",

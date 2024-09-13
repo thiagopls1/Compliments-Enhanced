@@ -5,6 +5,6 @@ export const routes: Routes = [
   {
     path: "login",
     component: LoginComponent,
-    title: "Taggin - Login"
+    title: "Taggin' - Login"
   }
 ];

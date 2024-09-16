@@ -1,13 +1,9 @@
 <div class="container">
   <h2>Faça seu login ou crie sua conta</h2>
   <div class="login-card-border-wrap">
-    <mat-card class="login-card">
-      <mat-form-field>
-        <input matInput type="text" placeholder="Usuário">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="password" placeholder="Senha">
-      </mat-form-field>
-    </mat-card>
+    <div class="login-card">
+      <app-text-input label="Nome" type="input" [required]="true" icon="person"></app-text-input>
+      <app-text-input label="Senha" type="password" [required]="true"></app-text-input>
+    </div>
   </div>
 </div>

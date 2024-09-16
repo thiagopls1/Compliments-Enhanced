@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { MaterialModule } from '../../../modules/material.module';
+import { MyMaterialModule } from '../../../modules/my-material.module';
+import { TextInputComponent } from "../../components/text-input/text-input.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MaterialModule],
+  imports: [MyMaterialModule, TextInputComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

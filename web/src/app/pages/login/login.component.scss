@@ -8,7 +8,7 @@
 }
 
 .login-card-border-wrap {
-  min-width: 25%;
+  min-width: 35%;
   background-image: -webkit-gradient(0deg, rgb(255, 0, 242) 0%, rgba(121,9,116,1) 50%, rgba(0,255,156,1) 100%);
   background-image: -moz-linear-gradient(60deg, rgb(255, 0, 242) 0%, rgb(0, 140, 255) 50%, rgb(0, 182, 121) 100%);
   border-radius: 5px;
@@ -17,10 +17,8 @@
 
 .login-card {
   border-style: solid;
+  border-color: transparent;
+  background-color: #fff;
   border-radius: 5px;
   padding: 5em;
-}
-
-.text-input {
-  background: transparent !important;
 }

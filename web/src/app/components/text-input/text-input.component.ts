@@ -38,11 +38,6 @@ import { CommonModule } from '@angular/common';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => TextInputComponent),
       multi: true,
-    },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => TextInputComponent),
-      multi: true,
     }
   ],
 })
@@ -51,8 +46,6 @@ export class TextInputComponent implements ControlValueAccessor, OnInit {
   @Input() type: string = 'text';
   @Input() icon: string = '';
   @Input() required: boolean = false;
-
-  formControl: FormControl = new FormControl<string>('');
   destroyRef: DestroyRef = inject(DestroyRef);
 
   onChange: (value: string) => void = noop;
@@ -60,6 +53,11 @@ export class TextInputComponent implements ControlValueAccessor, OnInit {
 
   disabled = false;
   value = '';
+
+  formControl: FormControl = new FormControl({
+    value: '',
+    disabled: this.disabled,
+  });
 
   registerOnChange(fn: (value: string) => void): void {
     this.onChange = fn;

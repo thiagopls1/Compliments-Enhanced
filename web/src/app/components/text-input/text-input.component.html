@@ -7,9 +7,8 @@
       class="form-field"
       [placeholder]="label"
       (input)="onChange(value)"
-      [disabled]="formControl.enabled"
     />
-    <label [for]="label" class="form-label">{{label}}{{required ? '*' : ''}}</label>
+    <label [for]="label" class="form-label unselectable">{{label}}{{required ? '*' : ''}}</label>
     <div class="invalid-form" *ngIf="formControl.invalid && formControl.touched">Campo obrigatório</div>
   </div>
 </div>

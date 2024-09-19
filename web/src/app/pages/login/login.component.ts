@@ -10,5 +10,6 @@ import { TextInputComponent } from "../../components/text-input/text-input.compo
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-
+  userName: string = '';
+  password: string = '';
 }

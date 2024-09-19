@@ -1,6 +1,15 @@
 <div class="container">
+  <mat-icon>{{icon}}</mat-icon>
   <div class="form-group field">
-    <input [type]="type" class="form-field" [placeholder]="label" [name]="label" [id]="label" [required]="required" />
+    <input
+      [type]="type"
+      [formControl]="formControl"
+      class="form-field"
+      [placeholder]="label"
+      (input)="onChange(value)"
+      [disabled]="formControl.enabled"
+    />
     <label [for]="label" class="form-label">{{label}}{{required ? '*' : ''}}</label>
+    <div class="invalid-form" *ngIf="formControl.invalid && formControl.touched">Campo obrigatório</div>
   </div>
 </div>

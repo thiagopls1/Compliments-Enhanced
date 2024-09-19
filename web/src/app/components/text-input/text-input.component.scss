@@ -2,22 +2,28 @@ $primary: #115799;
 $secondary: #d038ef;
 $white: #fff;
 $gray: #9b9b9b;
+$dark-gray: #5e5e5e;
 
 .container {
-  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  gap: 10px;
+  justify-content: start;
 }
 
 .form-group {
   position: relative;
   padding: 15px 0 0;
   margin-top: 10px;
+  width: 100%;
 }
 
 .form-field {
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: 2px solid $gray;
+  border-bottom: 2px solid $dark-gray;
   outline: 0;
   font-size: 1rem;
   color: $white;
@@ -43,9 +49,8 @@ $gray: #9b9b9b;
   display: block;
   transition: 0.2s;
   font-size: 0.6rem;
-  color: $gray;
+  color: $dark-gray;
 }
-
 
 .form-field:focus {
   ~ .form-label {
@@ -56,13 +61,25 @@ $gray: #9b9b9b;
     font-size: 1rem;
     color: $primary;
   }
-
-  padding-bottom: 6px;  
+  padding-bottom: 6px;
   border-width: 3px;
-  border-image: linear-gradient(to right, $primary,$secondary);
+  border-image: linear-gradient(to right, $primary, $secondary);
   border-image-slice: 1;
 }
 /* reset input */
-.form-field{
-  &:required,&:invalid { box-shadow:none; }
+.form-field {
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
+}
+
+.invalid-form {
+  color: rgb(255, 127, 127);
+  font-size: 0.7em;
+}
+
+mat-icon {
+  color: $dark-gray;
+  padding: 5px;
 }

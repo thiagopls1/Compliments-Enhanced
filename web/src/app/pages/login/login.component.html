@@ -1,9 +1,20 @@
 <div class="container">
-  <h2>Faça seu login ou crie sua conta</h2>
   <div class="login-card-border-wrap">
     <div class="login-card">
-      <app-text-input label="Nome" type="input" [required]="true" icon="person"></app-text-input>
-      <app-text-input label="Senha" type="password" [required]="true"></app-text-input>
+      <div class="header-container">
+        <mat-icon>star</mat-icon>
+        <h3>Taggin'</h3>
+      </div>
+      <div class="content-container">
+        <div class="fields-container">
+          <app-text-input label="Nome" type="input" icon="person" [(ngModel)]="userName"></app-text-input>
+          <app-text-input label="Senha" type="password" icon="lock" [(ngModel)]="password"></app-text-input>
+        </div>
+        <div class="actions-container">
+          <button>Entrar</button>
+          <button>Criar uma conta</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
